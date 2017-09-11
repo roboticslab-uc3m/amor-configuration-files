@@ -1,0 +1,99 @@
+<application>
+
+    <name>SensorsApp</name>
+    <description>Launcher application for AMOR+SpaceNavigator+sensors</description>
+
+    <module>
+        <name>serialport</name>
+        <parameters>--name /arduino --comport /dev/ttyACM0 --baudrate 115200 --paritymode NONE --readtimeoutmsec 3000 --xinenb 0 --xoutenb 0 --databits 8 --stopbits 1</parameters>
+        <node>localhost</node>
+        <deployer>yarpdev</deployer>
+        <display>--minimized</display>
+        <prefix>/amor</prefix>
+        <ensure>
+            <wait when="start">7.0</wait>
+        </ensure>
+    </module>
+
+    <module>
+        <name>python</name>
+        <parameters>/home/asibot-msi/Desktop/sensor_reader.py</parameters>
+        <node>localhost</node>
+        <!--<workdir>/home/asibot-msi/Desktop</workdir>-->
+        <prefix>/amor</prefix>
+    </module>
+
+    <!--<module>
+        <name>gnome-terminal</name>
+        <parameters>-e "yarp read ... tcp+recv.portmonitor+type.lua+context.sensors+file.amor_sensors_modifier.lua://amor/arduino/out"</parameters>
+        <node>localhost</node>
+    </module>-->
+
+    <module>
+        <name>yarpscope</name>
+        <parameters>--index "(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42)" --min 0 --max 1000</parameters>
+        <node>localhost</node>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>opencv_grabber</name>
+        <parameters>--name /webcam</parameters>
+        <node>localhost</node>
+        <deployer>yarpdev</deployer>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>yarpview</name>
+        <parameters>--name /yarpview/webcam -w 640 -h 480 -compact</parameters>
+        <node>localhost</node>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>AmorCartesianControl</name>
+        <parameters>--name /CartesianControl</parameters>
+        <node>localhost</node>
+        <deployer>yarpdev</deployer>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>SpaceNavigator</name>
+        <parameters>--period 5 --name /spacenavigator --ports "(mouse buttons)" --channels 8 --mouse 0 5 0 5 --buttons 6 7 0 1</parameters>
+        <node>localhost</node>
+        <deployer>yarpdev</deployer>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>streamingSpnav</name>
+        <parameters>--remoteCartesian /amor/CartesianControl --remoteSpnav /amor/spacenavigator/mouse --scaling 10 --fixedAxes "(rotx roty rotz)" --useSensors --remote /amor/arduino/out</parameters>
+        <node>localhost</node>
+        <!--<prefix>/amor</prefix>-->
+        <dependencies>
+            <port timeout="5.0">/amor/arduino/out</port>
+            <port timeout="5.0">/amor/CartesianControl/command:i</port>
+            <port timeout="5.0">/amor/spacenavigator/mouse</port>
+        </dependencies>
+    </module>
+
+    <connection>
+        <from>/amor/arduino/out</from>
+        <to>/amor/sensor_reader_gui</to>
+        <protocol>tcp+recv.portmonitor+type.lua+context.sensors+file.amor_sensors_modifier.lua</protocol>
+    </connection>
+
+    <connection>
+        <from>/amor/arduino/out</from>
+        <to>/amor/yarpscope</to>
+        <protocol>tcp+recv.portmonitor+type.lua+context.sensors+file.amor_sensors_modifier.lua</protocol>
+    </connection>
+
+    <connection>
+        <from>/amor/webcam</from>
+        <to>/amor/yarpview/webcam</to>
+    </connection>
+
+</application>
