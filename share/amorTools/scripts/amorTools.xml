@@ -78,7 +78,7 @@
 
     <module>
         <name>haarDetectionController</name>
-        <parameters>--remoteVision /amor/haarDetection2D --remoteCartesian /amor/CartesianControl --sensorsPort /amor/arduino/out --thresholdGripper 400</parameters>
+        <parameters>--remoteVision /amor/haarDetection2D --remoteCartesian /amor/CartesianControl --sensorsPort /amor/arduino/out --thresholdGripper 400 --usePortMonitor</parameters>
     </module>
 
     <module>
