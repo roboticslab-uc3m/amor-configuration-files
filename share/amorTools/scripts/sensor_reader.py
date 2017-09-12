@@ -5,17 +5,17 @@ yarp.Network.init()
 
 root = tk.Tk()
 
-armSensors = tk.LabelFrame(root, text="Arm sensors")
-armSensors.pack(fill="both", expand="yes", side="left")
+handSensors = tk.LabelFrame(root, text="Hand sensors")
+handSensors.pack(fill="both", expand="yes", side="left")
 
 forearmSensors = tk.LabelFrame(root, text="Forearm sensors")
 forearmSensors.pack(fill="both", expand="yes", side="left")
 
-handSensors = tk.LabelFrame(root, text="Hand sensors")
-handSensors.pack(fill="both", expand="yes", side="left")
+armSensors = tk.LabelFrame(root, text="Arm sensors")
+armSensors.pack(fill="both", expand="yes", side="left")
 
 sensors = []
-parts = [armSensors, forearmSensors, handSensors]
+parts = [handSensors, forearmSensors, armSensors]
 
 for part in range(3):
     labels = []
