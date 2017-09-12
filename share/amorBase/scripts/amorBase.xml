@@ -1,0 +1,17 @@
+<application>
+    <name>amorBase App</name>
+
+    <module>
+        <name>AmorCartesianControl</name>
+        <parameters>--name /amor/CartesianControl --kinematics /usr/local/share/amor/contexts/kinematics/armKinematics.ini --angleRepr RPY</parameters>
+        <node>localhost</node>
+        <deployer>yarpdev</deployer>
+    </module>
+
+    <module>
+        <name>gnome-terminal</name>
+        <parameters>-e "yarp rpc /amor/CartesianControl/rpc_transform:s"</parameters>
+        <node>localhost</node>
+    </module>
+
+</application>

@@ -1,5 +1,7 @@
-add_subdirectory(kinematics)
+add_subdirectory(amorBase)
+add_subdirectory(amorSimBase)
 add_subdirectory(amorTools)
+add_subdirectory(kinematics)
 
 yarp_install(FILES ymanager.ini
              DESTINATION ${AMOR_APPLICATIONS_INSTALL_DIR})
