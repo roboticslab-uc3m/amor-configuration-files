@@ -17,9 +17,9 @@
 
     <module>
         <name>python</name>
-        <parameters>/home/asibot-msi/Desktop/sensor_reader.py</parameters>
+        <parameters>sensor_reader.py</parameters>
         <node>localhost</node>
-        <!--<workdir>/home/asibot-msi/Desktop</workdir>-->
+        <workdir>/usr/local/share/amor/applications</workdir>
         <prefix>/amor</prefix>
     </module>
 
@@ -31,7 +31,7 @@
 
     <module>
         <name>yarpscope</name>
-        <parameters>--index "(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42)" --min 0 --max 1000</parameters>
+        <parameters>--index "(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42)" --min 0 --max 1500</parameters>
         <node>localhost</node>
         <prefix>/amor</prefix>
     </module>
