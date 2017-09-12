@@ -53,4 +53,47 @@
         <parameters>--streamingDevice LeapMotionSensor --remoteCartesian /amorSim/CartesianControl --LeapMotionSensor::remote /leap</parameters>
     </module>
 
+    <!-- VISION -->
+    <module>
+        <name>opencv_grabber</name>
+        <parameters>--name /frameGrabber2D --camera 1 --width 640 --height 480</parameters>
+        <node>localhost</node>
+        <deployer>yarpdev</deployer>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>yarpview</name>
+        <parameters>--name /yarpview/frameGrabber2D</parameters>
+        <node>localhost</node>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>haarDetection2D</name>
+        <parameters>--cameraLocal /haarDetection2D --cameraRemote /amor/frameGrabber2D --xmlCascade haarcascade_cocacola_can.xml</parameters>
+        <node>localhost</node>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>haarDetectionController</name>
+        <parameters>--remoteVision /amor/haarDetection2D --remoteCartesian /amor/CartesianControl --sensorsPort /amor/arduino/out --thresholdGripper 400</parameters>
+    </module>
+
+    <module>
+        <name>haarDetectionController</name>
+        <parameters>--remoteVision /amor/haarDetection2D --remoteCartesian /amor/CartesianControl --disableSensors</parameters>
+    </module>
+
+    <module>
+        <name>haarDetectionController</name>
+        <parameters>--remoteVision /amor/haarDetection2D --remoteCartesian /amor/CartesianControl --disableSensors --noApproach</parameters>
+    </module>
+
+    <connection>
+        <from>/amor/haarDetection2D/img:o</from>
+        <to>/amor/yarpview/frameGrabber2D</to>
+    </connection>
+
 </application>

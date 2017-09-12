@@ -38,7 +38,7 @@
 
     <module>
         <name>opencv_grabber</name>
-        <parameters>--name /webcam</parameters>
+        <parameters>--name /webcam --camera 1</parameters>
         <node>localhost</node>
         <deployer>yarpdev</deployer>
         <prefix>/amor</prefix>
