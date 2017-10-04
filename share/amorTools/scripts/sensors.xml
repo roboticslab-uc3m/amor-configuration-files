@@ -46,7 +46,7 @@
 
     <module>
         <name>yarpview</name>
-        <parameters>--name /yarpview/webcam -w 640 -h 480 -compact</parameters>
+        <parameters>--name /yarpview/webcam --w 640 --h 480 --compact</parameters>
         <node>localhost</node>
         <prefix>/amor</prefix>
     </module>

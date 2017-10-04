@@ -64,7 +64,7 @@
 
     <module>
         <name>yarpview</name>
-        <parameters>--name /yarpview/frameGrabber2D</parameters>
+        <parameters>--name /yarpview/frameGrabber2D --w 640 --h 480 --compact</parameters>
         <node>localhost</node>
         <prefix>/amor</prefix>
     </module>
