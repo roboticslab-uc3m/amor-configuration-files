@@ -71,9 +71,9 @@
 
     <module>
         <name>haarDetection2D</name>
-        <parameters>--cameraLocal /haarDetection2D --cameraRemote /amor/frameGrabber2D --xmlCascade haarcascade_cocacola_can.xml</parameters>
+        <parameters>--cameraLocal /amor/haarDetection2D --cameraRemote /amor/frameGrabber2D --xmlCascade haarcascade_cocacola_can.xml</parameters>
         <node>localhost</node>
-        <prefix>/amor</prefix>
+        <!--<prefix>/amor</prefix> FIXME: breaks connection from cameraLocal to cameraRemote at device level-->
     </module>
 
     <module>
