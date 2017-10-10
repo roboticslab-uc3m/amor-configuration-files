@@ -55,7 +55,7 @@
 
     <module>
         <name>streamingDeviceController</name>
-        <parameters>--streamingDevice LeapMotionSensor --remoteCartesian /amor/CartesianControl --LeapMotionSensor::remote /leap --LeapMotionSensors::leapFrameRPY "(180 90 0)" --LeapMotionSensor::fixedAxes "(rotx roty rotz)" --period 0.05 --scaling 0.75 --useSensors --sensorsPort /amor/arduino/out --disableSensorsLowLevel --usePortMonitor</parameters>
+        <parameters>--streamingDevice LeapMotionSensor --remoteCartesian /amor/CartesianControl --LeapMotionSensor::remote /leap --LeapMotionSensors::leapFrameRPY "(180 0 0)" --LeapMotionSensor::fixedAxes "(rotx roty rotz)" --period 0.05 --scaling 0.75 --useSensors --sensorsPort /amor/arduino/out --disableSensorsLowLevel --usePortMonitor</parameters>
     </module>
 
     <!-- VISION -->
