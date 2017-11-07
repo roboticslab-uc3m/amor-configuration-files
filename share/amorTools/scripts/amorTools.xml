@@ -35,7 +35,7 @@
 
     <module>
         <name>gnome-terminal</name>
-        <parameters>-e "keyboardController --remoteCartesian /amorSim/CartesianControl"</parameters>
+        <parameters>-e "keyboardController --remoteCartesian /amorSim/CartesianControl --remoteRobot /amor/amorManipulator"</parameters>
     </module>
 
     <module>
