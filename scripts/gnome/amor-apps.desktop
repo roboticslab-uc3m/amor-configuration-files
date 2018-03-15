@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=AMOR Apps yarpmanager
+Type=Application
+MimeType=application/vnd.ms-htmlhelp;
+Exec=yarpmanager
+NoDisplay=true
+StartupNotify=true
+Icon=/usr/local/share/amor/applications/RL_logo_64x64.png
+Path=/usr/local/share/amor/applications
+Name[en_US]=amor-apps

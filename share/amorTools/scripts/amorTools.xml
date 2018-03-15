@@ -1,0 +1,104 @@
+<application>
+    <name>amorTools App</name>
+
+    <!-- JOINT -->
+    <module>
+        <name>gnome-terminal</name>
+        <parameters>-e "yarp rpc /amor/amorManipulator/rpc:i"</parameters>
+        <node>localhost</node>
+    </module>
+
+    <!-- CARTESIAN -->
+    <module>
+        <name>gnome-terminal</name>
+        <parameters>-e "yarp rpc /asibot/CartesianControl/rpc_transform:s"</parameters>
+        <node>localhost</node>
+    </module>
+
+    <module>
+        <name>gnome-terminal</name>
+        <parameters>-e "yarp rpc /amorSim/CartesianControl/rpc_transform:s"</parameters>
+        <node>localhost</node>
+    </module>
+
+    <!-- MOTORS -->
+    <module>
+        <name>yarpmotorgui</name>
+        <parameters>--from yarpmotorgui/amor-yarpmotorgui.ini</parameters>
+    </module>
+
+    <!-- CONTROLLERS -->
+    <module>
+        <name>gnome-terminal</name>
+        <parameters>-e "keyboardController --remoteCartesian /amor/CartesianControl --skipRCB"</parameters>
+    </module>
+
+    <module>
+        <name>gnome-terminal</name>
+        <parameters>-e "keyboardController --remoteCartesian /amorSim/CartesianControl --remoteRobot /amor/amorManipulator"</parameters>
+    </module>
+
+    <module>
+        <name>streamingDeviceController</name>
+        <parameters>--streamingDevice SpaceNavigator --remoteCartesian /amorSim/CartesianControl --SpaceNavigator::remote /spacenavigator</parameters>
+    </module>
+
+    <module>
+        <name>streamingDeviceController</name>
+        <parameters>--streamingDevice WiimoteSensor --remoteCartesian /amorSim/CartesianControl --WiimoteSensor::remote /wiimote</parameters>
+    </module>
+
+    <module>
+        <name>streamingDeviceController</name>
+        <parameters>--streamingDevice LeapMotionSensor --remoteCartesian /amorSim/CartesianControl --LeapMotionSensor::remote /leap</parameters>
+    </module>
+
+    <module>
+        <name>streamingDeviceController</name>
+        <parameters>--streamingDevice LeapMotionSensor --remoteCartesian /amor/CartesianControl --LeapMotionSensor::remote /leap --LeapMotionSensors::leapFrameRPY "(180 0 0)" --LeapMotionSensor::fixedAxes "(rotx roty rotz)" --period 0.05 --scaling 0.75 --useSensors --sensorsPort /amor/arduino/out --disableSensorsLowLevel --usePortMonitor</parameters>
+    </module>
+
+    <!-- VISION -->
+    <module>
+        <name>opencv_grabber</name>
+        <parameters>--name /frameGrabber2D --camera 1 --width 640 --height 480</parameters>
+        <node>localhost</node>
+        <deployer>yarpdev</deployer>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>yarpview</name>
+        <parameters>--name /yarpview/frameGrabber2D --w 640 --h 480 --compact</parameters>
+        <node>localhost</node>
+        <prefix>/amor</prefix>
+    </module>
+
+    <module>
+        <name>haarDetection2D</name>
+        <parameters>--cameraLocal /amor/haarDetection2D --cameraRemote /amor/frameGrabber2D --xmlCascade haarcascade_cocacola_can.xml</parameters>
+        <node>localhost</node>
+        <!--<prefix>/amor</prefix> FIXME: breaks connection from cameraLocal to cameraRemote at device level-->
+    </module>
+
+    <module>
+        <name>haarDetectionController</name>
+        <parameters>--remoteVision /amor/haarDetection2D --remoteCartesian /amor/CartesianControl --sensorsPort /amor/arduino/out --thresholdGripper 400 --usePortMonitor</parameters>
+    </module>
+
+    <module>
+        <name>haarDetectionController</name>
+        <parameters>--remoteVision /amor/haarDetection2D --remoteCartesian /amor/CartesianControl --disableSensors</parameters>
+    </module>
+
+    <module>
+        <name>haarDetectionController</name>
+        <parameters>--remoteVision /amor/haarDetection2D --remoteCartesian /amor/CartesianControl --disableSensors --noApproach</parameters>
+    </module>
+
+    <connection>
+        <from>/amor/haarDetection2D/img:o</from>
+        <to>/amor/yarpview/frameGrabber2D</to>
+    </connection>
+
+</application>
