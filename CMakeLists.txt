@@ -39,7 +39,7 @@ file(WRITE ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake "# Dummy CMake config
 
 # Install CMake configuration file.
 install(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake
-        DESTINATION ${PROJECT_NAME}_CMAKE_DESTINATION)
+        DESTINATION ${${PROJECT_NAME}_CMAKE_DESTINATION})
 
 # Add uninstall rule.
 include(AddUninstallTarget)
