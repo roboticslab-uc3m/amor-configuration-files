@@ -17,9 +17,8 @@
 
     <module>
         <name>python</name>
-        <parameters>sensor_reader.py</parameters>
+        <parameters>sensorReader.py</parameters>
         <node>localhost</node>
-        <workdir>/usr/local/share/amor/applications</workdir>
         <prefix>/amor</prefix>
     </module>
 
