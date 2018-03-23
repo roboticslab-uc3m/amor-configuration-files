@@ -25,7 +25,7 @@
 
     <!--<module>
         <name>gnome-terminal</name>
-        <parameters>-e "yarp read ... tcp+recv.portmonitor+type.lua+context.sensors+file.amor_sensors_modifier.lua://amor/arduino/out"</parameters>
+        <parameters>-e "yarp read ... tcp+recv.portmonitor+type.lua+context.portmonitor+file.amor_sensors_modifier.lua://amor/arduino/out"</parameters>
         <node>localhost</node>
     </module>-->
 
@@ -54,13 +54,13 @@
     <connection>
         <from>/amor/arduino/out</from>
         <to>/amor/sensor_reader_gui</to>
-        <protocol>tcp+recv.portmonitor+type.lua+context.sensors+file.amor_sensors_modifier.lua</protocol>
+        <protocol>tcp+recv.portmonitor+type.lua+context.portmonitor+file.amor_sensors_modifier.lua</protocol>
     </connection>
 
     <connection>
         <from>/amor/arduino/out</from>
         <to>/amor/yarpscope</to>
-        <protocol>tcp+recv.portmonitor+type.lua+context.sensors+file.amor_sensors_modifier.lua</protocol>
+        <protocol>tcp+recv.portmonitor+type.lua+context.portmonitor+file.amor_sensors_modifier.lua</protocol>
     </connection>
 
     <connection>
