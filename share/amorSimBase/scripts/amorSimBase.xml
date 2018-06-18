@@ -1,22 +1,22 @@
 <application>
     <name>amorSimBase App</name>
 
-    <module>
+    <!--<module>
         <name>teoSim</name>
         <parameters>--env /usr/local/share/amor/contexts/openrave/models/amor_clean.env.xml --amor::initPoss "(-90 0 0 -180 180 90 -90)"</parameters>
         <node>localhost</node>
-    </module>
+    </module>-->
 
     <module>
         <name>BasicCartesianControl</name>
-        <parameters>--name /amorSim/CartesianControl --from /usr/local/share/amor/contexts/kinematics/armKinematics.ini --angleRepr RPY --robot remote_controlboard --local /BasicCartesianControl/amorSim --remote /amor/amorManipulator</parameters>
+        <parameters>--name /amorSim/CartesianControl --from /usr/local/share/amor/contexts/kinematics/armKinematics.ini --angleRepr RPY --robot remote_controlboard --local /BasicCartesianControl/amorSim --remote /amorRobot/amorManipulator</parameters>
         <node>localhost</node>
         <deployer>yarpdev</deployer>
     </module>
 
     <module>
         <name>gnome-terminal</name>
-        <parameters>-e "yarp rpc /amor/amorManipulator/rpc:i"</parameters>
+        <parameters>-e "yarp rpc /amorRobot/amorManipulator/rpc:i"</parameters>
         <node>localhost</node>
         <deployer>gksu</deployer>
     </module>
