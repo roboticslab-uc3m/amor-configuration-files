@@ -12,6 +12,7 @@ yarp_configure_external_installation(amor)
 
 # Traverse subdirectories.
 add_subdirectory(share)
+add_subdirectory(scripts)
 
 # Store this package in the user registry.
 export(PACKAGE ${PROJECT_NAME})
