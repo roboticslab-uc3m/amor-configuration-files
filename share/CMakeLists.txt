@@ -1,13 +1,13 @@
-add_subdirectory(amorBase)
-add_subdirectory(amorSimBase)
-add_subdirectory(amorTools)
-add_subdirectory(kinematics)
+yarp_install(FILES applications/ymanager.ini
+                   applications/amorBase.xml
+                   applications/amorSimBase.xml
+                   applications/amorTools.xml
+                   applications/sensors.xml
+             DESTINATION ${AMOR-CONFIGURATION-FILES_APPLICATIONS_INSTALL_DIR})
 
-yarp_install(FILES ymanager.ini
-             DESTINATION ${AMOR_APPLICATIONS_INSTALL_DIR})
+yarp_install(DIRECTORY yarpmotorgui
+                       ../doc/fig
+             DESTINATION ${AMOR-CONFIGURATION-FILES_DATA_INSTALL_DIR})
 
-yarp_install(FILES yarpmotorgui/amor-yarpmotorgui.ini
-             DESTINATION ${AMOR_APPLICATIONS_INSTALL_DIR})
-
-yarp_install(FILES ${CMAKE_SOURCE_DIR}/doc/fig/RL_logo_64x64.png
-             DESTINATION ${AMOR_APPLICATIONS_INSTALL_DIR})
+yarp_install(DIRECTORY contexts/kinematics
+             DESTINATION ${AMOR-CONFIGURATION-FILES_CONTEXTS_INSTALL_DIR})

@@ -8,7 +8,7 @@ find_package(YCM 0.11 REQUIRED)
 find_package(YARP 3.2 REQUIRED)
 
 # Set some useful variables - paths relative to the installation prefix.
-yarp_configure_external_installation(amor)
+yarp_configure_external_installation(amor-configuration-files)
 
 # Traverse subdirectories.
 add_subdirectory(share)
