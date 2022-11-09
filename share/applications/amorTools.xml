@@ -30,7 +30,7 @@
     <!-- CONTROLLERS -->
     <module>
         <name>gnome-terminal</name>
-        <parameters>-e "keyboardController --remoteCartesian /amor/CartesianControl --skipRCB"</parameters>
+        <parameters>-e "keyboardController --remoteCartesian /amor/CartesianControl"</parameters>
     </module>
 
     <module>
