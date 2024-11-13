@@ -1,2 +1,4 @@
+include(GNUInstallDirs)
+
 yarp_install(PROGRAMS bash/amorSim
-             TYPE BIN)
+             DESTINATION ${CMAKE_INSTALL_BINDIR})
